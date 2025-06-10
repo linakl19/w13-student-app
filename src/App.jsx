@@ -20,7 +20,7 @@ function App() {
   return (
     <main>
       <h1>Attendance</h1>
-      <ClassInfo></ClassInfo>
+      <ClassInfo studentCount= {studentData.length}></ClassInfo>
       <StudentList students={studentData}></StudentList>
     </main>
   );
