@@ -1,12 +1,27 @@
 import PropTypes from "prop-types";
+import './Student.css';
+import { useState } from 'react';
+
 
 const Student = (props) => {
+    const [isPresent, setIsPresent] = useState(false);
+
+    // updates the isPresent state
+    const togglePresence = () => {
+        setIsPresent(isPresent => !isPresent);
+    };
+    
+    // variable that holds the name of the (CSS) classes
+    const nameColor = isPresent ? 'green-present' : 'red-absent';
+    
     return (
-        <ul>
-            {console.log(props)}
-            <li>Nickname: {props.name}</li>
-            <li>Email: {props.email}</li>
-        </ul>
+        <div>
+            <ul>
+                <li className={nameColor}>Nickname: {props.name}</li>
+                <li>Email: {props.email}</li>
+            </ul>
+            <button onClick={togglePresence}>Toggle if {props.name} is present</button>
+        </div>
     );
 };
 
