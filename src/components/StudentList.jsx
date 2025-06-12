@@ -1,4 +1,5 @@
 import './StudentList.css';
+import PropTypes from 'prop-types';
 import Student from './Student';
 
 const StudentList = (props) => {
@@ -18,6 +19,15 @@ const StudentList = (props) => {
             </ul>
         </section>
     );
+};
+
+StudentList.propTypes = {
+    students: PropTypes.arrayOf(
+        PropTypes.shape({
+            nameData: PropTypes.string.isRequired,
+            emailData: PropTypes.string.isRequired,
+        })
+    ),
 };
 
 export default StudentList;
