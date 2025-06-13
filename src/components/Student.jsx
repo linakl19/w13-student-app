@@ -1,9 +1,15 @@
 import PropTypes from "prop-types";
 import './Student.css';
-import { useState } from 'react';
 
 
-const Student = (props) => {    
+const Student = (props) => {   
+    
+    const attendanceButtonClicked = () => {
+        // Invoke the function passed in through the prop named "onPresenceToggle"
+        // This function refers to the toggleStudentPresence function in App
+        return props.onPresenceToggle(props.id);
+    };
+    
     // variable that holds the name of the (CSS) classes
     const nameColor = props.isPresent ? 'green-present' : 'red-absent';
 
@@ -13,7 +19,10 @@ const Student = (props) => {
                 <li className={nameColor}>Nickname: {props.name}</li>
                 <li>Email: {props.email}</li>
             </ul>
-            <button onClick={/* togglePresence */}>Toggle if {props.name} is present</button>
+            {/* Passing a named function */}
+            <button onClick={ attendanceButtonClicked }>Toggle if {props.name} is present</button>
+            {/* Passing an Anonymous function */}
+            {/* <button onClick={() => {props.onPresenceToggle(props.id)}}>Toggle if {props.name} is present</button> */}
         </div>
     );
 };
@@ -23,6 +32,7 @@ Student.propTypes = {
     name: PropTypes.string.isRequired,
     email: PropTypes.string,
     isPresent: PropTypes.bool.isRequired,
+    onPresenceToggle: PropTypes.func.isRequired,
 };
 
 // Using default props, we can make PropTypes optional instead of isRequired:

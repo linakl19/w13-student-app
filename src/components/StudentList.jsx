@@ -11,6 +11,7 @@ const StudentList = (props) => {
                     name={student.nameData} 
                     email={student.emailData}
                     isPresent={student.isPresentData}
+                    onPresenceToggle={props.onStudentPresenceToggle}
                 ></Student>
             </li>
         );
@@ -33,8 +34,8 @@ StudentList.propTypes = {
             nameData: PropTypes.string.isRequired,
             emailData: PropTypes.string.isRequired,
             isPresentData: PropTypes.bool.isRequired,
-        })
-    ),
+    })),
+    onStudentPresenceToggle: PropTypes.func.isRequired,
 };
 
 export default StudentList;

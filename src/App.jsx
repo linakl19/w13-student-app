@@ -42,7 +42,10 @@ const toggleStudentPresence = (studentId) => {
     <main>
       <h1>Attendance</h1>
       <ClassInfo studentCount= {studentData.length}></ClassInfo>
-      <StudentList students={studentData}></StudentList>
+      <StudentList 
+        students={studentData}
+        onStudentPresenceToggle={toggleStudentPresence}
+      ></StudentList>
     </main>
   );
 }
