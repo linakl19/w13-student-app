@@ -26,22 +26,26 @@ const kInitialStudentData = [
 function App() {
   const [studentData, setStudentData] = useState(kInitialStudentData);
 
-const toggleStudentPresence = (studentId) => {
-    setStudentData(students => {
-      return students.map(student => {
-        if (student.id === studentId) {
-          return { ...student, isPresentData: !student.isPresentData };
-        } else {
-          return student;
-        }
+  const toggleStudentPresence = (studentId) => {
+      setStudentData(students => {
+        return students.map(student => {
+          if (student.id === studentId) {
+            return { ...student, isPresentData: !student.isPresentData };
+          } else {
+            return student;
+          }
+        });
       });
-    });
+    };
+
+  const deleteAllStudents = () => {
+    setStudentData([]);
   };
 
   return (
     <main>
       <h1>Attendance</h1>
-      <ClassInfo studentCount= {studentData.length}></ClassInfo>
+      <ClassInfo studentCount= {studentData.length} onClickedDeleteAll={deleteAllStudents}></ClassInfo>
       <StudentList 
         students={studentData}
         onStudentPresenceToggle={toggleStudentPresence}
